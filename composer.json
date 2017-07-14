@@ -1,0 +1,21 @@
+{
+    "name": "kattatzu/sbif",
+    "description": "Consulta de indicadores al api de la superintendencia de bancos (Chile)",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jose Eduardo Rios",
+            "email": "kattatzu@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "nesbot/carbon": "^1.22"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kattatzu\\SBIF\\": "src/"
+        }
+    }
+}
