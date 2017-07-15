@@ -21,7 +21,6 @@ composer require kattatzu/sbif
 ```
 
 ## Uso de forma Standalone
-
 ```php
 use Kattatzu/Sbif/Sbif;
 
@@ -30,5 +29,15 @@ echo $sbif->getDollar('2017-04-30');
 //664.0
 ```
 
+### Indicadores disponibles
+```php
+$date = Carbon::today();
+
+$sbif->getDollar($date);
+$sbif->getEuro($date);
+$sbif->getUTM($date);
+$sbif->getUF($date);
+$sbif->getIPC($date);
+```
 
 
