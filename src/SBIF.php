@@ -223,7 +223,7 @@ class Sbif
 			case self::IND_IPC:
 				$value = isset($body->IPCs[0]) ? $body->IPCs[0]->Valor : 0; break;
 			case self::INF_BANK:
-				$value = isset($body->Perfiles[0]) ? $body->Perfiles[0] : null; break;
+				return isset($body->Perfiles[0]) ? $body->Perfiles[0] : null; break;
 		}
 
 		return (double) $value;
