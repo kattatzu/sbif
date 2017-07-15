@@ -60,7 +60,7 @@ Sbif::IND_IPC
 ```
 Si necesitas acceder al resto de los datos que disponibiliza la SBIF puedes enviar directamente el endpoint que corresponda:
 ```php
-$sbif->get(/resultados/2009/12/instituciones);
+$sbif->get("/resultados/2009/12/instituciones");
 ```
 
 ```php
