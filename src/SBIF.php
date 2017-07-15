@@ -156,7 +156,7 @@ class Sbif
 	 */
 	private function normalizeDate($date = null){
 		if (is_null($date)){
-			return Carbon::today();
+			$date = Carbon::today();
 		}
 
 		$date = ($date instanceof Carbon) ? $date : Carbon::parse($date);
