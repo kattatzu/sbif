@@ -27,7 +27,7 @@ class Sbif
 	 * @var string $apiKey El API key de SBIF
 	 */
 	public function __construct($apiKey = null){
-		$this->apiKey = $apiKey;
+		$this->apiKey($apiKey);
 	}
 
 	/**
