@@ -9,6 +9,10 @@ Libreria que permite consultar el valor de indicadores al API de la superintende
 
 Además se puede acceder a la información los bancos de Chile.
 
+Para usar el API de la SBIF debes obtener tu APIKEY en la página:
+
+http://api.sbif.cl/api/contactanos.jsp
+
 ## Instalación
 Para instalar la librería ejecuta el siguiente comando en la consola:
 
@@ -19,8 +23,9 @@ composer require kattatzu/sbif
 ## Uso de forma Standalone
 
 ```php
-use Kattatzu/SBIF/SBIF;
-$sbif = new SBIF('SBIF API KEY');
+use Kattatzu/Sbif/Sbif;
+
+$sbif = new Sbif('SBIF API KEY');
 echo $sbif->getDollar('2017-04-30');
 //664.0
 ```
