@@ -55,6 +55,13 @@ Sbif::IND_DOLLAR
 Sbif::IND_EURO
 Sbif::IND_IPC
 ```
+### Información de Bancos
+Puedes consultar por al información que disponibiliza la SBIF sobre los bancos de Chile.
+```php
+$info = $sbif->getInstitutionData('001');
+echo $info->name;
+// BANCO DE CHILE
+```
 
 
 
