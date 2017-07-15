@@ -160,6 +160,13 @@ Después de hacer la instalación con Composer debes registrar el ServiceProvide
 ]
 ```
 
+Ya puedes usar el Facade para acceder de forma rápida a las funciones:
+
+```php
+Sbif::getDollar();
+Sbif::getUTM('2017-06-30');
+Sbif::getUF(Carbon::today());
+```
 
 
 
