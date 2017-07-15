@@ -170,7 +170,7 @@ class Sbif
 	 * @var DateTime $date fecha a consultar
 	 * @return string
 	 */
-	private function getIntitutionEndPoint($code, $date = null)
+	private function getInstitutionEndPoint($code, $date = null)
 	{
 		$date = $this->normalizeDate($date);
 		$yearMonthDate = $date->format("Y/m");
