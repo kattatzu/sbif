@@ -75,15 +75,6 @@ class Sbif
 	}
 
 	/**
-	 * Retorna el valor del IPC
-	 * @var DateTime $date fecha a consultar (opcional)
-	 * @return double
-	 */
-	function getIPC($date = null){
-		return $this->getIndicator(self::IND_IPC, $date);
-	}
-
-	/**
 	 * Retorna el valor de un indicador para una fecha en
 	 * particular
 	 * @var int $indicator indicador a consultar
