@@ -63,6 +63,29 @@ echo $info->name;
 // BANCO DE CHILE
 ```
 
+Puedes obtener la información como un array:
+```php
+$info = $sbif->getInstitutionData('001')->toArray();
+var_dump($info);
+```
+```js
+[
+  "code" => "001"
+  "name" => "BANCO DE CHILE"
+  "swift_code" => "BCHI CL RM"
+  "rut" => "97.004.000-5"
+  "address" => "AHUMADA 251"
+  "phone" => "(56-2) 653 11 11"
+  "website" => "www.bancochile.cl"
+  "public_contact" => "Pamela Valdivia"
+  "public_address" => "Huérfanos 980, 8º Piso, Santiago"
+  "public_phone" => "(56-2) 653 06 73"
+  "branches" => 403
+  "employees" => 11426
+  "publication_date" => "2017-05-01"
+  "cashiers" => 1412
+]
+```
 
 
 
