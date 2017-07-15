@@ -1,6 +1,7 @@
 {
     "name": "kattatzu/sbif",
-    "description": "Consulta de indicadores al api de la superintendencia de bancos (Chile)",
+    "description": "Consulta de indicadores al API de la SBIF (Chile)",
+    "keywords": ["laravel","illuminate","sbif","dolar","uf","utm","utm","ipc","chile"],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -14,8 +15,11 @@
         "nesbot/carbon": "^1.22"
     },
     "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
         "psr-4": {
-            "Kattatzu\\SBIF\\": "src/"
+            "Kattatzu\\Sbif\\": "src/"
         }
     }
 }
