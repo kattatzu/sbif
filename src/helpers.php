@@ -1,4 +1,6 @@
 <?php
+use Kattatzu\Sbif\Institution;
+
 if (! function_exists('sbif_dollar'))
 {
     function sbif_dollar($date = null)
@@ -44,5 +46,13 @@ if (! function_exists('sbif_institution'))
     function sbif_institution($code, $date = null)
     {
         return Sbif::getInstitutionData($code, $date);
+    }
+}
+
+if (! function_exists('sbif_institutions'))
+{
+    function sbif_institutions()
+    {
+        return (new Institution)->getInstitutions();
     }
 }
