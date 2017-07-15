@@ -38,6 +38,17 @@ $sbif->getEuro($date);
 $sbif->getUTM($date);
 $sbif->getUF($date);
 $sbif->getIPC($date);
+
+// Si no envias una fecha se toma la fecha actual
+$sbif->getDollar();
 ```
+
+También puedes consultar de forma dinámica
+```php
+$sbif->getIndicator(Sbif::IND_EURO, $date);
+```
+
+
+
 
 
