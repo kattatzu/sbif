@@ -87,7 +87,7 @@ var_dump($info);
 ]
 ```
 
-Para obtener el listado de códigos puedes acceder a través a la clase Institution:
+Para obtener el listado de códigos puedes usar la clase Institution:
 ```php
 use Kattatzu\Sbif\Institution;
 
