@@ -12,7 +12,7 @@ Además se puede acceder a la información los bancos de Chile.
 ## Instalación
 Para instalar la librería ejecuta el siguiente comando en la consola:
 
-```shell
+```bash
 composer require kattatzu/sbif
 ```
 
