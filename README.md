@@ -83,7 +83,7 @@ object(stdClass){
 
 
 ### Información de Bancos
-Puedes consultar por al información que disponibiliza la SBIF sobre los bancos de Chile.
+Puedes consultar la información que disponibiliza la SBIF sobre los bancos de Chile.
 ```php
 $info = $sbif->getInstitutionData('001');
 echo $info->name;
