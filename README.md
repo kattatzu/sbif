@@ -65,16 +65,16 @@ $sbif->get(/resultados/2009/12/instituciones);
 
 ```php
 object(stdClass){
-	"DescripcionesCodigosDeInstituciones": [
-    	"0" => {
-      		"CodigoInstitucion": "001",
-      		"NombreInstitucion": "BANCO DE CHILE"
-    	},
-    	"1" => {
-      		"CodigoInstitucion": "014",
-      		"NombreInstitucion": "SCOTIABANK CHILE"
-    	},
-    	...
+    "DescripcionesCodigosDeInstituciones": [
+        "0" => {
+            "CodigoInstitucion": "001",
+            "NombreInstitucion": "BANCO DE CHILE"
+        },
+        "1" => {
+            "CodigoInstitucion": "014",
+            "NombreInstitucion": "SCOTIABANK CHILE"
+        },
+        ...
     ]
 }
 ```
