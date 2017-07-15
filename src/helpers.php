@@ -38,3 +38,11 @@ if (! function_exists('sbif_ipc'))
     	return Sbif::getIPC($date);
     }
 }
+
+if (! function_exists('sbif_institution'))
+{
+    function sbif_institution($code, $date = null)
+    {
+        return Sbif::getInstitutionData($code, $date);
+    }
+}

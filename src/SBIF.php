@@ -16,6 +16,7 @@ class Sbif
 	const IND_DOLLAR = 300;
 	const IND_EURO = 400;
 	const IND_IPC = 500;
+	const INF_BANK = 600;
 
 	protected $apiKey = null;
 	protected $apiBase = 'http://api.sbif.cl/api-sbifv3/recursos_api/';
@@ -74,6 +75,15 @@ class Sbif
 	}
 
 	/**
+	 * Retorna el valor del IPC
+	 * @var DateTime $date fecha a consultar (opcional)
+	 * @return double
+	 */
+	function getIPC($date = null){
+		return $this->getIndicator(self::IND_IPC, $date);
+	}
+
+	/**
 	 * Retorna el valor de un indicador para una fecha en
 	 * particular
 	 * @var int $indicator indicador a consultar
@@ -81,11 +91,26 @@ class Sbif
 	 * @return object
 	 */
 	function getIndicator($indicator, $date = null){
-		$endpoint = $this->getEndPoint($indicator, $date);
+		$endpoint = $this->getIndicatorEndPoint($indicator, $date);
 		$value = $this->get($endpoint);
 
-		return $this->getValueOfIndicator($value, $indicator);
+		return $this->getValueFromResult($value, $indicator);
 	}
+
+	/**
+	 * Retorna la información de una institución bancaria de una
+	 * fecha en particular
+	 * @var string $code código de la institución
+	 * @var DateTime $date fecha a consultar (opcional)
+	 * @return object
+	 */
+	function getInstitutionData($code, $date = null){
+		$endpoint = $this->getInstitutionEndPoint($code, $date);
+		$value = $this->get($endpoint);
+
+		return $this->getValueFromResult($value, self::INF_BANK);
+	}
+
 	/**
 	 * Retorna la respuesta de un endpoint
 	 * @var string $endpoint endpoint a consultar
@@ -119,7 +144,7 @@ class Sbif
 	 * @var DateTime $date fecha a consultar
 	 * @return string
 	 */
-	private function getEndPoint($indicator, $date = null)
+	private function getIndicatorEndPoint($indicator, $date = null)
 	{
 		$date = $this->normalizeDate($date);
 		$yearMonthDate = $date->format("Y/m");
@@ -143,6 +168,22 @@ class Sbif
 				$endpoint = '/ipc/'.$yearMonthDate;
 				break;
 		}
+
+		return $endpoint;
+	}
+
+	/**
+	 * Retorna el endpoint correspondiente a la institución
+	 * financiera a consultar
+	 * @var string $code código de la institución
+	 * @var DateTime $date fecha a consultar
+	 * @return string
+	 */
+	private function getIntitutionEndPoint($code, $date = null)
+	{
+		$date = $this->normalizeDate($date);
+		$yearMonthDate = $date->format("Y/m");
+		$endpoint = '/perfil/instituciones/' . $code . '/' . $yearMonthDate;
 
 		return $endpoint;
 	}
@@ -176,7 +217,7 @@ class Sbif
 	 * @var int $indicator indicador consultado
 	 * @return double
 	 */
-	private function getValueOfIndicator($body, $indicator)
+	private function getValueFromResult($body, $indicator)
 	{
 		$value = 0;
 		switch ($indicator) {
@@ -190,6 +231,8 @@ class Sbif
 				$value = isset($body->UTMs[0]) ? $body->UTMs[0]->Valor : 0; break;
 			case self::IND_IPC:
 				$value = isset($body->IPCs[0]) ? $body->IPCs[0]->Valor : 0; break;
+			case self::self::INF_BANK:
+				$value = isset($body->Perfiles[0]) ? $body->Perfiles[0] : null; break;
 		}
 
 		return (double) $value;
