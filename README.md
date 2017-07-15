@@ -47,6 +47,14 @@ También puedes consultar de forma dinámica
 ```php
 $sbif->getIndicator(Sbif::IND_EURO, $date);
 ```
+Constantes disponibles
+```php
+Sbif::IND_UF
+Sbif::IND_UTM
+Sbif::IND_DOLLAR
+Sbif::IND_EURO
+Sbif::IND_IPC
+```
 
 
 
