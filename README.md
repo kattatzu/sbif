@@ -63,14 +63,14 @@ Si necesitas acceder al resto de los datos que disponibiliza la SBIF puedes envi
 $sbif->get(/resultados/2009/12/instituciones);
 ```
 
-```js
+```php
 object(stdClass){
 	"DescripcionesCodigosDeInstituciones": [
-    	0 => {
+    	"0" => {
       		"CodigoInstitucion": "001",
       		"NombreInstitucion": "BANCO DE CHILE"
     	},
-    	1 => {
+    	"1" => {
       		"CodigoInstitucion": "014",
       		"NombreInstitucion": "SCOTIABANK CHILE"
     	},
