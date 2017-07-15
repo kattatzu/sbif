@@ -7,10 +7,10 @@ Libreria que permite consultar el valor de indicadores al API de la superintende
 - UTM
 - IPC
 
-Además se puede acceder a la información los bancos de Chile.
+Además se puede acceder a la información de los bancos de Chile.
 
-Para usar el API de la SBIF debes obtener tu APIKEY en la página:
-
+## Obtener API key
+Para usar el API de la SBIF debes obtener tu APIKEY en la siguiente página:
 http://api.sbif.cl/api/contactanos.jsp
 
 ## Instalación
