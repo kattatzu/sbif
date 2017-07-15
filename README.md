@@ -21,6 +21,8 @@ composer require kattatzu/sbif
 ```
 
 ## Uso de forma Standalone
+Si tu sistema no trabaja con Laravel puedes usarlo de forma directa:
+
 ```php
 use Kattatzu/Sbif/Sbif;
 
@@ -56,6 +58,28 @@ Sbif::IND_DOLLAR
 Sbif::IND_EURO
 Sbif::IND_IPC
 ```
+Si necesitas acceder al resto de los datos que disponibiliza la SBIF puedes enviar directamente el endpoint que corresponda:
+```php
+$sbif->get(/resultados/2009/12/instituciones);
+```
+
+```js
+object(stdClass){
+	"DescripcionesCodigosDeInstituciones": [
+    	0 => {
+      		"CodigoInstitucion": "001",
+      		"NombreInstitucion": "BANCO DE CHILE"
+    	},
+    	1 => {
+      		"CodigoInstitucion": "014",
+      		"NombreInstitucion": "SCOTIABANK CHILE"
+    	},
+    	...
+    ]
+}
+```
+
+
 ### Información de Bancos
 Puedes consultar por al información que disponibiliza la SBIF sobre los bancos de Chile.
 ```php
