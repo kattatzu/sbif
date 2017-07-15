@@ -58,10 +58,10 @@ Sbif::IND_DOLLAR
 Sbif::IND_EURO
 Sbif::IND_IPC
 ```
-Si necesitas acceder al resto de los datos que disponibiliza la SBIF puedes enviar directamente el endpoint que corresponda:
+Puedes acceder al resto de los datos que disponibiliza la SBIF (http://api.sbif.cl/que-es-api.html) enviando directamente el endpoint que corresponda:
 ```php
-$info = $sbif->get("/resultados/2009/12/instituciones");
-// Resultado
+var_dump($sbif->get("/resultados/2009/12/instituciones"));
+
 object(stdClass){
     "DescripcionesCodigosDeInstituciones": [
         "0" => {
