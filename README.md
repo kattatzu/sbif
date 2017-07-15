@@ -54,6 +54,7 @@ También puedes consultar de forma dinámica
 ```php
 $sbif->getIndicator(Sbif::IND_EURO, $date);
 ```
+
 Constantes disponibles
 ```php
 Sbif::IND_UF
@@ -80,7 +81,6 @@ object(stdClass){
     ]
 }
 ```
-
 
 ### Información de Bancos
 Puedes consultar la información que disponibiliza la SBIF sobre los bancos de Chile.
@@ -146,6 +146,21 @@ var_dump((new Institution)->getInstitutions());
   "060" => "China Construction Bank"
 ]
 ```
+## Instalación en Laravel
+
+Después de hacer la instalación con Composer debes registrar el ServiceProvider y el alias en tu archivo config/app.php:
+```php
+'providers' => [
+	...
+	Kattatzu\Sbif\Providers\SbifServiceProvider::class,
+],
+'aliases' => [
+	...
+	'Sbif' => Kattatzu\Sbif\Facades\SbifFacade::class,
+]
+```
+
+
 
 
 
