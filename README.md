@@ -38,6 +38,7 @@ $sbif->getEuro($date);
 $sbif->getUTM($date);
 $sbif->getUF($date);
 $sbif->getIPC($date);
+// NOTA: El IPC solo tiene valor hasta el mes anterior
 
 // Si no envias una fecha se toma la fecha actual
 $sbif->getDollar();
