@@ -70,23 +70,55 @@ var_dump($info);
 ```
 ```js
 [
-  "code" => "001"
-  "name" => "BANCO DE CHILE"
-  "swift_code" => "BCHI CL RM"
-  "rut" => "97.004.000-5"
-  "address" => "AHUMADA 251"
-  "phone" => "(56-2) 653 11 11"
-  "website" => "www.bancochile.cl"
-  "public_contact" => "Pamela Valdivia"
-  "public_address" => "Huérfanos 980, 8º Piso, Santiago"
-  "public_phone" => "(56-2) 653 06 73"
-  "branches" => 403
-  "employees" => 11426
-  "publication_date" => "2017-05-01"
+  "code" => "001",
+  "name" => "BANCO DE CHILE",
+  "swift_code" => "BCHI CL RM",
+  "rut" => "97.004.000-5",
+  "address" => "AHUMADA 251",
+  "phone" => "(56-2) 653 11 11",
+  "website" => "www.bancochile.cl",
+  "public_contact" => "Pamela Valdivia",
+  "public_address" => "Huérfanos 980, 8º Piso, Santiago",
+  "public_phone" => "(56-2) 653 06 73",
+  "branches" => 403,
+  "employees" => 11426,
+  "publication_date" => "2017-05-01",
   "cashiers" => 1412
 ]
 ```
 
+Para obtener el listado de códigos puedes acceder a través a la clase Institution:
+```php
+use Kattatzu\Sbif\Institution;
+
+var_dump((new Institution)->getInstitutions());
+```
+```js
+[
+  "001" => "Banco de Chile",
+  "009" => "Banco Internacional",
+  "014" => "Scotiabank Chile",
+  "016" => "Banco de Credito E Inversiones",
+  "028" => "Banco Bice",
+  "031" => "HSBC Bank (chile)",
+  "037" => "Banco Santander-chile",
+  "039" => "Itaú Corpbanca",
+  "049" => "Banco Security",
+  "051" => "Banco Falabella",
+  "053" => "Banco Ripley",
+  "054" => "Rabobank Chile",
+  "055" => "Banco Consorcio",
+  "056" => "Banco Penta",
+  "504" => "Banco BBVA",
+  "059" => "Banco BTG Pactual Chile",
+  "012" => "Banco del Estado de Chile",
+  "017" => "Banco Do Brasil S.A.",
+  "041" => "JP Morgan Chase Bank, N. A.",
+  "043" => "Banco de la Nacion Argentina",
+  "045" => "The Bank of Tokyo-mitsubishi UFJ",
+  "060" => "China Construction Bank"
+]
+```
 
 
 
