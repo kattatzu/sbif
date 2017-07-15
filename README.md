@@ -27,9 +27,10 @@ Si tu sistema no trabaja con Laravel puedes usarlo de forma directa:
 use Kattatzu/Sbif/Sbif;
 
 $sbif = new Sbif('SBIF API KEY');
-// También puedes usar la función para definir el API Key
+// o
 $sbif = new Sbif;
 $sbif->apiKey('SBIF API KEY');
+
 echo $sbif->getDollar('2017-04-30');
 //664.0
 ```
