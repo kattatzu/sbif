@@ -6,6 +6,7 @@ use DateTime;
 use Carbon\Carbon;
 use Psr\Http\Message\RequestInterface;
 use Kattatzu\Sbif\Exception\ConnectException;
+use Kattatzu\Sbif\Exception\ApikeyNotFoundException;
 use Kattatzu\Sbif\Exception\EndpointNotFoundException;
 use GuzzleHttp\Exception\ConnectException as GuzzleConnectException;
 
@@ -25,7 +26,7 @@ class Sbif
 	 * Constructor de la clase
 	 * @var string $apiKey El API key de SBIF
 	 */
-	public function __construct($apiKey){
+	public function __construct($apiKey = null){
 		$this->apiKey = $apiKey;
 	}
 
@@ -110,6 +111,9 @@ class Sbif
 	 * @return object
 	 */
 	public function get($endpoint){
+		if($this->apikey === null){
+			throw new ApikeyNotFoundException;
+		}
 		$endpoint = (strpos($endpoint, '/') == 0) ? substr($endpoint, 1) : $endpoint;
 		$endpoint = $this->apiBase . $endpoint . '?apikey=' . $this->apiKey . '&formato=json';
 
