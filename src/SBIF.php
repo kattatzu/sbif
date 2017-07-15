@@ -111,7 +111,7 @@ class Sbif
 	 * @return object
 	 */
 	public function get($endpoint){
-		if($this->apikey === null){
+		if($this->apiKey === null){
 			throw new ApikeyNotFoundException;
 		}
 		$endpoint = (strpos($endpoint, '/') == 0) ? substr($endpoint, 1) : $endpoint;
