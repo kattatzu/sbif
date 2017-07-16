@@ -159,14 +159,14 @@ Después de hacer la instalación con Composer debes registrar el ServiceProvide
 	'Sbif' => Kattatzu\Sbif\Facades\SbifFacade::class,
 ]
 ```
-
+### Facades
 Ya puedes usar el Facade para acceder de forma rápida a las funciones:
 ```php
 Sbif::getDollar();
 Sbif::getUTM('2017-06-30');
 Sbif::getUF(Carbon::today());
 ```
-
+### Helpers
 También puedes utilizar los helpers:
 ```php
 sbif_dollar();
