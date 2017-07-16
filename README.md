@@ -19,7 +19,7 @@ Para instalar la librería ejecuta el siguiente comando en la consola:
 composer require kattatzu/sbif
 ```
 
-[Instalación en Laravel](#instalación-en-laravel)
+[Instalación y Uso en Laravel](#instalación-y-uso-en-laravel)
 
 ## Uso de forma Standalone
 Si tu sistema no trabaja con Laravel puedes usarlo de forma directa:
@@ -147,7 +147,7 @@ var_dump((new Institution)->getInstitutions());
   "060" => "China Construction Bank"
 ]
 ```
-## Instalación en Laravel
+## Instalación y Uso en Laravel
 
 Después de hacer la instalación con Composer debes registrar el ServiceProvider y el alias en tu archivo config/app.php:
 ```php
