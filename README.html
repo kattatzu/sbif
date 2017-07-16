@@ -1015,7 +1015,8 @@ body .markdown-body
   }
 }
 </style><title>README</title></head><body><article class="markdown-body"><h1 id="sbif-api"><a name="user-content-sbif-api" href="#sbif-api" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>SBIF API</h1>
-<p>Libreria que permite consultar el valor de indicadores al API de la superintendencia de bancos e instituciones financieras (SBIF) de Chile. Pueden acceder a ls siguientes indicadores:</p>
+<p>Libreria que permite consultar el valor de indicadores al API de la superintendencia de bancos e instituciones financieras (SBIF) de Chile.<br />
+Pueden acceder a los siguientes indicadores:</p>
 <ul>
 <li>Dólar</li>
 <li>Euro</li>
@@ -1023,7 +1024,7 @@ body .markdown-body
 <li>UTM</li>
 <li>IPC</li>
 </ul>
-<p>Además se puede acceder a la información de los bancos de Chile.</p>
+<p>Además se puede acceder a <a href="#información-de-bancos">información de bancos</a> de Chile.</p>
 <h2 id="obtener-api-key"><a name="user-content-obtener-api-key" href="#obtener-api-key" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Obtener API key</h2>
 <p>Para usar el API de la SBIF debes obtener tu APIKEY en la siguiente página:<br />
 <a href="http://api.sbif.cl/api/contactanos.jsp">http://api.sbif.cl/api/contactanos.jsp</a></p>
@@ -1031,7 +1032,7 @@ body .markdown-body
 <p>Para instalar la librería ejecuta el siguiente comando en la consola:<br />
 <pre><code class="bash">composer require kattatzu/sbif
 </code></pre></p>
-<p><a href="#instalación-en-laravel">Instalación en Laravel</a></p>
+<p><strong><a href="#instalación-y-uso-en-laravel">Instalación y Uso en Laravel</a></strong></p>
 <h2 id="uso-de-forma-standalone"><a name="user-content-uso-de-forma-standalone" href="#uso-de-forma-standalone" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Uso de forma Standalone</h2>
 <p>Si tu sistema no trabaja con Laravel puedes usarlo de forma directa:</p>
 <pre><code class="php">use Kattatzu/Sbif/Sbif;
@@ -1143,7 +1144,7 @@ var_dump((new Institution)-&gt;getInstitutions());
   &quot;060&quot; =&gt; &quot;China Construction Bank&quot;
 ]
 </code></pre></p>
-<h2 id="instalacion-en-laravel"><a name="user-content-instalacion-en-laravel" href="#instalacion-en-laravel" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Instalación en Laravel</h2>
+<h2 id="instalacion-y-uso-en-laravel"><a name="user-content-instalacion-y-uso-en-laravel" href="#instalacion-y-uso-en-laravel" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Instalación y Uso en Laravel</h2>
 <p>Después de hacer la instalación con Composer debes registrar el ServiceProvider y el alias en tu archivo config/app.php:<br />
 <pre><code class="php">'providers' =&gt; [
     ...

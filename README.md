@@ -20,7 +20,7 @@ Para instalar la librería ejecuta el siguiente comando en la consola:
 composer require kattatzu/sbif
 ```
 
-[Instalación y Uso en Laravel](#instalación-y-uso-en-laravel)
+**[Instalación y Uso en Laravel](#instalacion-y-uso-en-laravel)**
 
 ## Uso de forma Standalone
 Si tu sistema no trabaja con Laravel puedes usarlo de forma directa:
