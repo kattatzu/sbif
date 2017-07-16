@@ -151,12 +151,12 @@ var_dump((new Institution)->getInstitutions());
 Después de hacer la instalación con Composer debes registrar el ServiceProvider y el alias en tu archivo config/app.php:
 ```php
 'providers' => [
-	...
-	Kattatzu\Sbif\Providers\SbifServiceProvider::class,
+    ...
+    Kattatzu\Sbif\Providers\SbifServiceProvider::class,
 ],
 'aliases' => [
-	...
-	'Sbif' => Kattatzu\Sbif\Facades\SbifFacade::class,
+    ...
+    'Sbif' => Kattatzu\Sbif\Facades\SbifFacade::class,
 ]
 ```
 ### Facades
