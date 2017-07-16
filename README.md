@@ -1,5 +1,6 @@
 # SBIF API
-Libreria que permite consultar el valor de indicadores al API de la superintendencia de bancos e instituciones financieras (SBIF) de Chile. Pueden acceder a ls siguientes indicadores:
+Libreria que permite consultar el valor de indicadores al API de la superintendencia de bancos e instituciones financieras (SBIF) de Chile.
+Pueden acceder a los siguientes indicadores:
 
 - Dólar
 - Euro
@@ -7,7 +8,7 @@ Libreria que permite consultar el valor de indicadores al API de la superintende
 - UTM
 - IPC
 
-Además se puede acceder a la información de los bancos de Chile.
+Además se puede acceder a [información de bancos](#información-de-bancos) de Chile.
 
 ## Obtener API key
 Para usar el API de la SBIF debes obtener tu APIKEY en la siguiente página:
