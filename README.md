@@ -15,10 +15,11 @@ http://api.sbif.cl/api/contactanos.jsp
 
 ## Instalación
 Para instalar la librería ejecuta el siguiente comando en la consola:
-
 ```bash
 composer require kattatzu/sbif
 ```
+
+[Instalación en Laravel](#instalación-en-laravel)
 
 ## Uso de forma Standalone
 Si tu sistema no trabaja con Laravel puedes usarlo de forma directa:

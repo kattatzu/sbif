@@ -1023,15 +1023,150 @@ body .markdown-body
 <li>UTM</li>
 <li>IPC</li>
 </ul>
-<p>Además se puede acceder a la información los bancos de Chile.</p>
+<p>Además se puede acceder a la información de los bancos de Chile.</p>
+<h2 id="obtener-api-key"><a name="user-content-obtener-api-key" href="#obtener-api-key" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Obtener API key</h2>
+<p>Para usar el API de la SBIF debes obtener tu APIKEY en la siguiente página:<br />
+<a href="http://api.sbif.cl/api/contactanos.jsp">http://api.sbif.cl/api/contactanos.jsp</a></p>
 <h2 id="instalacion"><a name="user-content-instalacion" href="#instalacion" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Instalación</h2>
-<p>Para instalar la librería ejecuta el siguiente comando en la consola:</p>
-<pre><code class="shell">composer require kattatzu/sbif
-</code></pre>
-
+<p>Para instalar la librería ejecuta el siguiente comando en la consola:<br />
+<pre><code class="bash">composer require kattatzu/sbif
+</code></pre></p>
+<p><a href="#instalación-en-laravel">Instalación en Laravel</a></p>
 <h2 id="uso-de-forma-standalone"><a name="user-content-uso-de-forma-standalone" href="#uso-de-forma-standalone" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Uso de forma Standalone</h2>
-<pre><code class="php">use Kattatzu/SBIF/SBIF;
-$sbif = new SBIF('SBIF API KEY');
+<p>Si tu sistema no trabaja con Laravel puedes usarlo de forma directa:</p>
+<pre><code class="php">use Kattatzu/Sbif/Sbif;
+
+$sbif = new Sbif('SBIF API KEY');
+// o
+$sbif = new Sbif;
+$sbif-&gt;apiKey('SBIF API KEY');
+
 echo $sbif-&gt;getDollar('2017-04-30');
 //664.0
-</code></pre></article></body></html>
+</code></pre>
+
+<h3 id="indicadores-disponibles"><a name="user-content-indicadores-disponibles" href="#indicadores-disponibles" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Indicadores disponibles</h3>
+<pre><code class="php">$date = Carbon::today();
+
+$sbif-&gt;getDollar($date);
+$sbif-&gt;getEuro($date);
+$sbif-&gt;getUTM($date);
+$sbif-&gt;getUF($date);
+$sbif-&gt;getIPC($date);
+// NOTA: El IPC solo tiene valor hasta el mes anterior
+
+// Si no envias una fecha se toma la fecha actual
+$sbif-&gt;getDollar();
+</code></pre>
+
+<p>También puedes consultar de forma dinámica<br />
+<pre><code class="php">$sbif-&gt;getIndicator(Sbif::IND_EURO, $date);
+</code></pre></p>
+<p>Constantes disponibles<br />
+<pre><code class="php">Sbif::IND_UF
+Sbif::IND_UTM
+Sbif::IND_DOLLAR
+Sbif::IND_EURO
+Sbif::IND_IPC
+</code></pre><br />
+Puedes acceder al resto de los datos que disponibiliza la SBIF (<a href="http://api.sbif.cl/que-es-api.html">http://api.sbif.cl/que-es-api.html</a>) enviando directamente el endpoint que corresponda:<br />
+<pre><code class="php">var_dump($sbif-&gt;get(&quot;/resultados/2009/12/instituciones&quot;));
+
+object(stdClass){
+    &quot;DescripcionesCodigosDeInstituciones&quot;: [
+        &quot;0&quot; =&gt; {
+            &quot;CodigoInstitucion&quot;: &quot;001&quot;,
+            &quot;NombreInstitucion&quot;: &quot;BANCO DE CHILE&quot;
+        },
+        &quot;1&quot; =&gt; {
+            &quot;CodigoInstitucion&quot;: &quot;014&quot;,
+            &quot;NombreInstitucion&quot;: &quot;SCOTIABANK CHILE&quot;
+        },
+        ...
+    ]
+}
+</code></pre></p>
+<h3 id="informacion-de-bancos"><a name="user-content-informacion-de-bancos" href="#informacion-de-bancos" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Información de Bancos</h3>
+<p>Puedes consultar la información que disponibiliza la SBIF sobre los bancos de Chile.<br />
+<pre><code class="php">$info = $sbif-&gt;getInstitutionData('001');
+echo $info-&gt;name;
+// BANCO DE CHILE
+</code></pre></p>
+<p>Puedes obtener la información como un array:<br />
+<pre><code class="php">$info = $sbif-&gt;getInstitutionData('001')-&gt;toArray();
+var_dump($info);
+</code></pre><br />
+<pre><code class="js">[
+  &quot;code&quot; =&gt; &quot;001&quot;,
+  &quot;name&quot; =&gt; &quot;BANCO DE CHILE&quot;,
+  &quot;swift_code&quot; =&gt; &quot;BCHI CL RM&quot;,
+  &quot;rut&quot; =&gt; &quot;97.004.000-5&quot;,
+  &quot;address&quot; =&gt; &quot;AHUMADA 251&quot;,
+  &quot;phone&quot; =&gt; &quot;(56-2) 653 11 11&quot;,
+  &quot;website&quot; =&gt; &quot;www.bancochile.cl&quot;,
+  &quot;public_contact&quot; =&gt; &quot;Pamela Valdivia&quot;,
+  &quot;public_address&quot; =&gt; &quot;Huérfanos 980, 8º Piso, Santiago&quot;,
+  &quot;public_phone&quot; =&gt; &quot;(56-2) 653 06 73&quot;,
+  &quot;branches&quot; =&gt; 403,
+  &quot;employees&quot; =&gt; 11426,
+  &quot;publication_date&quot; =&gt; &quot;2017-05-01&quot;,
+  &quot;cashiers&quot; =&gt; 1412
+]
+</code></pre></p>
+<p>Para obtener el listado de códigos puedes usar la clase Institution:<br />
+<pre><code class="php">use Kattatzu\Sbif\Institution;
+
+var_dump((new Institution)-&gt;getInstitutions());
+</code></pre><br />
+<pre><code class="js">[
+  &quot;001&quot; =&gt; &quot;Banco de Chile&quot;,
+  &quot;009&quot; =&gt; &quot;Banco Internacional&quot;,
+  &quot;014&quot; =&gt; &quot;Scotiabank Chile&quot;,
+  &quot;016&quot; =&gt; &quot;Banco de Credito E Inversiones&quot;,
+  &quot;028&quot; =&gt; &quot;Banco Bice&quot;,
+  &quot;031&quot; =&gt; &quot;HSBC Bank (chile)&quot;,
+  &quot;037&quot; =&gt; &quot;Banco Santander-chile&quot;,
+  &quot;039&quot; =&gt; &quot;Itaú Corpbanca&quot;,
+  &quot;049&quot; =&gt; &quot;Banco Security&quot;,
+  &quot;051&quot; =&gt; &quot;Banco Falabella&quot;,
+  &quot;053&quot; =&gt; &quot;Banco Ripley&quot;,
+  &quot;054&quot; =&gt; &quot;Rabobank Chile&quot;,
+  &quot;055&quot; =&gt; &quot;Banco Consorcio&quot;,
+  &quot;056&quot; =&gt; &quot;Banco Penta&quot;,
+  &quot;504&quot; =&gt; &quot;Banco BBVA&quot;,
+  &quot;059&quot; =&gt; &quot;Banco BTG Pactual Chile&quot;,
+  &quot;012&quot; =&gt; &quot;Banco del Estado de Chile&quot;,
+  &quot;017&quot; =&gt; &quot;Banco Do Brasil S.A.&quot;,
+  &quot;041&quot; =&gt; &quot;JP Morgan Chase Bank, N. A.&quot;,
+  &quot;043&quot; =&gt; &quot;Banco de la Nacion Argentina&quot;,
+  &quot;045&quot; =&gt; &quot;The Bank of Tokyo-mitsubishi UFJ&quot;,
+  &quot;060&quot; =&gt; &quot;China Construction Bank&quot;
+]
+</code></pre></p>
+<h2 id="instalacion-en-laravel"><a name="user-content-instalacion-en-laravel" href="#instalacion-en-laravel" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Instalación en Laravel</h2>
+<p>Después de hacer la instalación con Composer debes registrar el ServiceProvider y el alias en tu archivo config/app.php:<br />
+<pre><code class="php">'providers' =&gt; [
+    ...
+    Kattatzu\Sbif\Providers\SbifServiceProvider::class,
+],
+'aliases' =&gt; [
+    ...
+    'Sbif' =&gt; Kattatzu\Sbif\Facades\SbifFacade::class,
+]
+</code></pre></p>
+<h3 id="facades"><a name="user-content-facades" href="#facades" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Facades</h3>
+<p>Ya puedes usar el Facade para acceder de forma rápida a las funciones:<br />
+<pre><code class="php">Sbif::getDollar();
+Sbif::getUTM('2017-06-30');
+Sbif::getUF(Carbon::today());
+</code></pre></p>
+<h3 id="helpers"><a name="user-content-helpers" href="#helpers" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Helpers</h3>
+<p>También puedes utilizar los helpers:<br />
+<pre><code class="php">sbif_dollar();
+sbif_euro('2017-06-30');
+sbif_utm(Carbon::yesterday());
+sbif_uf(Carbon::now()-&gt;subMonth(1));
+sbif_ipc();
+sbif_institution('001')-&gt;name;
+sbif_institutions();
+</code></pre></p></article></body></html>
