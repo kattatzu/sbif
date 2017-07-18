@@ -161,6 +161,17 @@ Después de hacer la instalación con Composer debes registrar el ServiceProvide
     'Sbif' => Kattatzu\Sbif\Facades\SbifFacade::class,
 ]
 ```
+
+Publica el archivo de configuración ejecutando en Artisan:
+```shell
+php artisan vendor:publish --provider="Kattatzu\Sbif\Providers\SbifServiceProvider"
+```
+
+Ya puedes ingresar tu API Key en el archivo de configuración config/sbif.php o en en archivo .env con la key SBIF_API_KEY.
+```shell
+SBIF_API_KEY=xxxxxxxxxxxxxxxxxxxx
+```
+
 ### Facades
 Ya puedes usar el Facade para acceder de forma rápida a las funciones:
 ```php
