@@ -1,4 +1,4 @@
 <?php
 return array(
-	'key' => null
+	'key' => env('SBIF_API_KEY', null)
 );
