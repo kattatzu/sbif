@@ -13,7 +13,9 @@ class SbifServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__.'/../config/config.php' => app()->basePath() . '/config/sbif.php',
+        ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class SbifServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(Sbif::class, function ($app) {
-            $apiKey = config('services.sbif.key', env('SBIF_API_KEY'));
+            $apiKey = config('sbif.key', env('SBIF_API_KEY'));
 
             return new Sbif($apiKey);
         });
