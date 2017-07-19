@@ -1,4 +1,4 @@
-<?php namespace Kattatzu\SBIF\Exception;
+<?php namespace Kattatzu\Sbif\Exception;
 
 use Exception;
 
