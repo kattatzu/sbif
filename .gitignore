@@ -10,3 +10,5 @@ vendor
 .Trashes
 ehthumbs.db
 Thumbs.db
+.idea/
+composer.lock

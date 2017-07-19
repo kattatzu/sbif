@@ -1,5 +1,4 @@
-<?php
-namespace Kattatzu\Sbif\Providers;
+<?php namespace Kattatzu\Sbif\Providers;
 
 use Kattatzu\Sbif\Sbif;
 use Illuminate\Support\ServiceProvider;
@@ -14,7 +13,7 @@ class SbifServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/config.php' => app()->basePath() . '/config/sbif.php',
+            __DIR__ . '/../config/config.php' => app()->basePath() . '/config/sbif.php',
         ]);
     }
 
@@ -32,6 +31,11 @@ class SbifServiceProvider extends ServiceProvider
         });
     }
 
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
     public function provides()
     {
         return [Sbif::class];

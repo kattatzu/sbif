@@ -1,5 +1,4 @@
-<?php
-namespace Kattatzu\Sbif\Facades;
+<?php namespace Kattatzu\Sbif\Facades;
 
 use Illuminate\Support\Facades\Facade;
 use Kattatzu\Sbif\Sbif;

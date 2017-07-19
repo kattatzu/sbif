@@ -97,7 +97,7 @@ Puedes obtener la información como un array:
 $info = $sbif->getInstitutionData('001')->toArray();
 var_dump($info);
 ```
-```js
+```php
 [
   "code" => "001",
   "name" => "BANCO DE CHILE",
@@ -122,7 +122,7 @@ use Kattatzu\Sbif\Institution;
 
 var_dump((new Institution)->getInstitutions());
 ```
-```js
+```php
 [
   "001" => "Banco de Chile",
   "009" => "Banco Internacional",
