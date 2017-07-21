@@ -3,11 +3,13 @@
 use Exception;
 use DateTime;
 use Carbon\Carbon;
-use Psr\Http\Message\RequestInterface;
+use Kattatzu\Sbif\Exception\InvalidDateException;
 use Kattatzu\Sbif\Exception\ConnectException;
+use Kattatzu\Sbif\Exception\RequestException;
 use Kattatzu\Sbif\Exception\ApikeyNotFoundException;
 use Kattatzu\Sbif\Exception\EndpointNotFoundException;
 use GuzzleHttp\Exception\ConnectException as GuzzleConnectException;
+use GuzzleHttp\Exception\RequestException as GuzzleRequestException;
 
 /**
  * Class Sbif
@@ -72,6 +74,8 @@ class Sbif
      */
     function getIndicator($indicator, $date = null)
     {
+        $date = $this->normalizeDate($date);
+        //$this->validateDate($date);
         $endpoint = $this->getIndicatorEndPoint($indicator, $date);
         $value = $this->get($endpoint);
 
@@ -87,7 +91,6 @@ class Sbif
      */
     private function getIndicatorEndPoint($indicator, $date = null)
     {
-        $date = $this->normalizeDate($date);
         $yearMonthDate = $date->format("Y/m");
         $dayDate = $date->format("d");
 
@@ -164,6 +167,8 @@ class Sbif
             $response = json_decode($res->getBody());
         } catch (GuzzleConnectException $e) {
             throw new ConnectException($endpoint);
+        } catch (GuzzleRequestException $e) {
+            throw new RequestException($endpoint, $e);
         }
 
         return $response;
@@ -271,9 +276,29 @@ class Sbif
     private function getInstitutionEndPoint($code, $date = null)
     {
         $date = $this->normalizeDate($date);
+        $this->validateDate($date);
+
         $yearMonthDate = $date->format("Y/m");
         $endpoint = '/perfil/instituciones/' . $code . '/' . $yearMonthDate;
 
         return $endpoint;
+    }
+
+    /**
+     * Valida que la fecha a consultar no sea futura
+     *
+     * @param Carbon $date fecha a consultar
+     * @throws InvalidDateException
+     * @return bool
+     */
+    private function validateDate(Carbon $date)
+    {
+        $today = Carbon::today();
+
+        if ($date->gt($today)) {
+            throw new InvalidDateException($date->toDateString());
+        }
+
+        return true;
     }
 }
