@@ -204,7 +204,7 @@ class Sbif
                 return new Institution($body->Perfiles[0]);
         }
 
-        return (float)$value;
+        return $this->normalizeNumber($value);
     }
 
     /**
@@ -300,5 +300,16 @@ class Sbif
         }
 
         return true;
+    }
+
+    /**
+     * Normaliza el formato de un número
+     *
+     * @param $number número a validar
+     * @return float
+     */
+    private function normalizeNumber($number)
+    {
+        return (float)str_replace(",", ".", $number);
     }
 }
