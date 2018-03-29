@@ -117,8 +117,7 @@ class Sbif
     }
 
     /**
-     * Devuelve una instancia Carbon de la fecha consultada. Si la fecha es de un sábado o domingo se devuelve al
-     * viernes previo
+     * Devuelve una instancia Carbon de la fecha consultada. 
      *
      * @param mixed $date fecha a normalizar
      * @return Carbon
@@ -130,11 +129,6 @@ class Sbif
         }
 
         $date = ($date instanceof Carbon) ? $date : Carbon::parse($date);
-
-        // Si la fecha es de un sábado o domingo se devuelve al viernes previo
-        if (in_array($date->dayOfWeek, array(0, 6))) {
-            $date->subDay(($date->dayOfWeek == 6) ? 1 : 2);
-        }
 
         return $date;
     }
