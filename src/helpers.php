@@ -3,7 +3,7 @@
 if (!function_exists('sbif_dollar')) {
     /**
      * Retorna el valor del dólar
-     * @param null $date fecha a consultar
+     * @param $date fecha a consultar
      * @return mixed
      */
     function sbif_dollar($date = null)
@@ -15,7 +15,7 @@ if (!function_exists('sbif_dollar')) {
 if (!function_exists('sbif_euro')) {
     /**
      * Retorna el valor del euro
-     * @param null $date fecha a consultar
+     * @param $date fecha a consultar
      * @return mixed
      */
     function sbif_euro($date = null)
@@ -27,7 +27,7 @@ if (!function_exists('sbif_euro')) {
 if (!function_exists('sbif_utm')) {
     /**
      * Retorna el valor de la UTM
-     * @param null $date fecha a consultar
+     * @param $date fecha a consultar
      * @return mixed
      */
     function sbif_utm($date = null)
@@ -39,7 +39,7 @@ if (!function_exists('sbif_utm')) {
 if (!function_exists('sbif_uf')) {
     /**
      * Retorna el valor de la UF
-     * @param null $date fecha a consultar
+     * @param $date fecha a consultar
      * @return mixed
      */
     function sbif_uf($date = null)
@@ -51,7 +51,7 @@ if (!function_exists('sbif_uf')) {
 if (!function_exists('sbif_ipc')) {
     /**
      * Retorna el valor del IPC
-     * @param null $date fecha a consultar
+     * @param $date fecha a consultar
      * @return mixed
      */
     function sbif_ipc($date = null)
@@ -64,7 +64,7 @@ if (!function_exists('sbif_institution')) {
     /**
      * Retorna la información de una institución
      * @param string $code código de la institución a consultar
-     * @param null $date fecha a consultar
+     * @param $date fecha a consultar
      * @return mixed
      */
     function sbif_institution($code, $date = null)

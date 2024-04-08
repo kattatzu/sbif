@@ -11,8 +11,8 @@
         }
     ],
     "require": {
-        "guzzlehttp/guzzle": "^6.3",
-        "nesbot/carbon": "^1.22"
+        "guzzlehttp/guzzle": "^7.8.1",
+        "nesbot/carbon": "^3.2.4"
     },
     "autoload": {
         "files": [

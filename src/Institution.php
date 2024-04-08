@@ -41,7 +41,7 @@ class Institution
     /**
      * Constructor
      *
-     * @param null $response
+     * @param $response
      */
     public function __construct($response = null)
     {

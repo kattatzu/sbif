@@ -1,6 +1,5 @@
 <?php namespace Kattatzu\Sbif;
 
-use Exception;
 use DateTime;
 use Carbon\Carbon;
 use Kattatzu\Sbif\Exception\InvalidDateException;
@@ -31,7 +30,7 @@ class Sbif
     /**
      * Constructor de la clase
      *
-     * @param null $apiKey El API key de SBIF
+     * @param $apiKey El API key de SBIF
      */
     public function __construct($apiKey = null)
     {
@@ -162,7 +161,7 @@ class Sbif
         } catch (GuzzleConnectException $e) {
             throw new ConnectException($endpoint);
         } catch (GuzzleRequestException $e) {
-            throw new RequestException($endpoint, $e);
+            throw new RequestException($endpoint);
         }
 
         return $response;
